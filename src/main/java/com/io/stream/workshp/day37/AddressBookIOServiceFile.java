@@ -1,5 +1,6 @@
 package com.io.stream.workshp.day37;
 
+import java.io.FileWriter;
 import java.io.IOException;
 import java.io.Reader;
 import java.io.Writer;
@@ -8,6 +9,7 @@ import java.nio.file.Path;
 import java.nio.file.Paths;
 import java.util.List;
 
+import com.google.gson.Gson;
 import com.opencsv.CSVReader;
 import com.opencsv.CSVWriter;
 import com.opencsv.bean.StatefulBeanToCsv;
@@ -19,6 +21,7 @@ import com.opencsv.exceptions.CsvRequiredFieldEmptyException;
 public class AddressBookIOServiceFile {
 	public String iOFileName = "src/main/java/resources/iOfile.txt";
 	public String csvFileName = "src/main/java/resources/CSVFile.csv";
+	public String jsonFileName = "src/main/java/resources/jsonFile.json";
 
 	public void writeIOData(List<Contact> list) {
 		StringBuffer empBuffer = new StringBuffer();
@@ -89,6 +92,18 @@ public class AddressBookIOServiceFile {
 			e.printStackTrace();
 		}
 
+	}
+
+	public void writeJasonData(List<Contact> list) {
+		Gson gson = new Gson();
+		String jason = gson.toJson(list);
+		try {
+			FileWriter writer = new FileWriter(jsonFileName);
+			writer.write(jason);
+			writer.close();
+		} catch (IOException e) {
+			e.printStackTrace();
+		}
 	}
 
 }

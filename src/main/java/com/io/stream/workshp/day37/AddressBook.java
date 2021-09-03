@@ -38,6 +38,8 @@ public class AddressBook {
 		showContacts();
 		// searching for Name is present or not
 		searchingContact();
+		searchNameByCityOrState();
+		
 
 	}
 
@@ -140,6 +142,17 @@ public class AddressBook {
 			if (i.firstName.contentEquals("Mohsin")) {
 
 				System.out.println("Name found :" + i.firstName);
+			} else {
+				System.out.println("No match");
+			}
+		}
+
+	}
+	private static void searchNameByCityOrState() {
+		for (Contact i : list) {
+			if (i.city.contentEquals("Metpally") && i.state.contentEquals("Telangana") && i.firstName.contentEquals("Mohsin")) {
+
+				System.out.println("Name found :"+i.firstName);
 			} else {
 				System.out.println("No match");
 			}

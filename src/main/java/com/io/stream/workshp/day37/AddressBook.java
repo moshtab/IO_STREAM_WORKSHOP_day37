@@ -39,7 +39,7 @@ public class AddressBook {
 		// searching for Name is present or not
 		searchingContact();
 		searchNameByCityOrState();
-		
+		viewContactNamesByCityOrState();
 
 	}
 
@@ -148,13 +148,26 @@ public class AddressBook {
 		}
 
 	}
+
 	private static void searchNameByCityOrState() {
 		for (Contact i : list) {
-			if (i.city.contentEquals("Metpally") && i.state.contentEquals("Telangana") && i.firstName.contentEquals("Mohsin")) {
+			if (i.city.contentEquals("Metpally") && i.state.contentEquals("Telangana")
+					&& i.firstName.contentEquals("Mohsin")) {
 
-				System.out.println("Name found :"+i.firstName);
+				System.out.println("Name found :" + i.firstName);
 			} else {
 				System.out.println("No match");
+			}
+		}
+
+	}
+
+	private static void viewContactNamesByCityOrState() {
+		for (Contact i : list) {
+			if (i.city.contentEquals("Metpally") || i.state.contentEquals("Telangana")) {
+				System.out.println("Name found :" + i.firstName);
+			} else {
+				System.out.println("No City or State found");
 			}
 		}
 

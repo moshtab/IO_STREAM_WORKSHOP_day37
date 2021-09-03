@@ -6,11 +6,14 @@ import java.util.Scanner;
 import java.util.stream.Collectors;
 
 public class AddressBook {
+
 	static List<Contact> list;
 
 	public AddressBook(List<Contact> list2) {
 		AddressBook.list = list2;
 	}
+
+	static AddressBook addressBook = new AddressBook(list);
 
 	public static void main(String[] args) {
 		List<Contact> list = new ArrayList<Contact>();
@@ -25,13 +28,14 @@ public class AddressBook {
 		// deleting contact by console
 		addressBook.deleteContact();
 		// Adding new contact to Addressbook
-		addressBook.addContact();
-        // using stream to Display the contacts
+		addressBook.addingMultipleContacts();
+		// using stream to Display the contacts
 		showContacts();
 
 	}
 
 	private void addContact() {
+		System.out.println("Adding a new contact to Addressbook");
 		Scanner s = new Scanner(System.in);
 		System.out.println("Enter the First name");
 		String firstName = s.nextLine();
@@ -68,6 +72,7 @@ public class AddressBook {
 	}
 
 	private void editContact() {
+		System.out.println("Editing the contact details");
 		Scanner s = new Scanner(System.in);
 		System.out.println("Enter the First name");
 		String firstName = s.nextLine();
@@ -97,6 +102,7 @@ public class AddressBook {
 	}
 
 	private void deleteContact() {
+		System.out.println("Deleting the contacts");
 		String firstName = " ";
 		String lastName = " ";
 		String city = " ";
@@ -107,6 +113,18 @@ public class AddressBook {
 		Contact contact = new Contact(firstName, lastName, city, state, email, phoneNumber, zip);
 
 		list.add(contact);
+
+	}
+
+	private void addingMultipleContacts() {
+		System.out.println("Adding multiple contacts to addressbook");
+		Scanner s = new Scanner(System.in);
+		System.out.println("Enter how many contacts do u want to add?");
+		int numOfContacts = s.nextInt();
+		for (int i = 1; i <= numOfContacts; i++) {
+
+			addressBook.addContact();
+		}
 
 	}
 

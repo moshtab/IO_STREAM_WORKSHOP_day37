@@ -27,13 +27,13 @@ public class AddressBook {
 		// Adding new contact to Addressbook
 		addressBook.addContact();
 		// Editing the contact details
-		// addressBook.editContact();
+		addressBook.editContact();
 		// deleting contact by console
-		// addressBook.deleteContact();
+		addressBook.deleteContact();
 		// Adding multiple contact to Addressbook
-		// addressBook.addingMultipleContacts();
+		addressBook.addingMultipleContacts();
 		// Adding new contact to Addressbook2
-		// addressBook2.addContact();
+		addressBook2.addContact();
 		// using stream to Display the contacts
 		showContacts();
 		// searching for Name is present or not
@@ -47,13 +47,14 @@ public class AddressBook {
 		addressBook.writeContactToCSV();
 		addressBook.readCsvContact();
 		addressBook.writeJsonContact();
-		//section3 JDBC
+		// section3 JDBC
 		AddressBookJDBC addressBookJDBC = new AddressBookJDBC();
 		addressBookJDBC.eshtablishConnection();
 		addressBookJDBC.readAddressBook();
 		addressBookJDBC.updateAddressBook();
 		addressBookJDBC.showContactsBetweenGivenDates();
 		addressBookJDBC.countContactsByCity();
+		addressBookJDBC.insertContact();
 
 	}
 
@@ -203,27 +204,27 @@ public class AddressBook {
 		System.out.println("Total counts of contacts :" + count);
 	}
 
-	private void writeIOContact() {
+	void writeIOContact() {
 		new AddressBookIOServiceFile().writeIOData(list);
 
 	}
 
-	private void readIOContact() {
+	void readIOContact() {
 		new AddressBookIOServiceFile().readIOData();
 
 	}
 
-	private void writeContactToCSV() {
+	void writeContactToCSV() {
 		new AddressBookIOServiceFile().writeCSVData(list);
 
 	}
 
-	private void readCsvContact() {
+	void readCsvContact() {
 		new AddressBookIOServiceFile().readCSVData();
 
 	}
 
-	private void writeJsonContact() {
+	void writeJsonContact() {
 		new AddressBookIOServiceFile().writeJasonData(list);
 
 	}

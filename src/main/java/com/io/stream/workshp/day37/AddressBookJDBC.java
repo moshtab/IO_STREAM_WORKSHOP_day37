@@ -12,7 +12,7 @@ public class AddressBookJDBC {
 	public void eshtablishConnection() {
 		Connection conn = getSqlConnection();
 		if (conn != null) {
-			System.out.println("Connection is eshtablished");
+			System.out.println("Connection is eshtablished ===================");
 		}
 
 	}
@@ -32,7 +32,7 @@ public class AddressBookJDBC {
 	}
 
 	public void readAddressBook() {
-		System.out.println("Displaying all data of adressBook table");
+		System.out.println("Displaying all data of adressBook table========================");
 		Connection conn = getSqlConnection();
 
 		try {
@@ -77,7 +77,7 @@ public class AddressBookJDBC {
 	}
 
 	public void updateAddressBook() {
-		System.out.println("Updating address of Sumer ");
+		System.out.println("Updating address of Sumer ================================= ");
 		Connection conn = getSqlConnection();
 		if (conn != null) {
 			String updateEmpPayroll = "UPDATE adressbook SET address = ? WHERE lastName ='Sumer'";
@@ -106,7 +106,7 @@ public class AddressBookJDBC {
 	}
 
 	public void showContactsBetweenGivenDates() {
-		System.out.println("Displaying contacts added between given dates");
+		System.out.println("Displaying contacts added between given dates=====================");
 		Connection conn = getSqlConnection();
 
 		try {
@@ -139,7 +139,7 @@ public class AddressBookJDBC {
 	}
 
 	public void countContactsByCity() {
-		System.out.println("Counting number of contact by city");
+		System.out.println("Counting number of contact by city=========================");
 		Connection conn = getSqlConnection();
 
 		try {
@@ -168,7 +168,45 @@ public class AddressBookJDBC {
 				}
 			}
 		}
-		
+
+	}
+
+	public void insertContact() {
+		System.out.println("Inserting a new contact to adressbook table=============================");
+		Connection conn = getSqlConnection();
+		if (conn != null) {
+			String insertEmp = "INSERT INTO adressbook (firstName,lastName,address,city,state,zip,phoneNumber,email,joinedDate) values(?,?,?,?,?,?,?,?,?)";
+			try {
+				PreparedStatement preparedStatement = conn.prepareStatement(insertEmp);
+				preparedStatement.setString(1, "Md");
+				preparedStatement.setString(2, "Sofyan");
+				preparedStatement.setString(3, "banjarahills");
+				preparedStatement.setString(4, "Hyderabad");
+				preparedStatement.setString(5, "Kerala");
+				preparedStatement.setInt(6, 505327);
+				preparedStatement.setString(7, "8639619379");
+				preparedStatement.setString(8, "mdsof@gmail.com");
+				preparedStatement.setString(9, "2021-10-01");
+
+				int rowUpdated = preparedStatement.executeUpdate();
+				if (rowUpdated > 0) {
+					System.out.println("Data is Updated");
+				}
+			} catch (SQLException e) {
+
+				e.printStackTrace();
+			} finally {
+				if (conn != null) {
+					try {
+						conn.close();
+					} catch (SQLException sqlException) {
+						System.out.println(sqlException.getMessage());
+
+					}
+				}
+			}
+		}
+
 	}
 
 }

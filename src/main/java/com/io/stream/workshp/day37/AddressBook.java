@@ -24,7 +24,9 @@ public class AddressBook {
 		addressBook.editContact();
 		// deleting contact by console
 		addressBook.deleteContact();
-		// using stream to Display the contacts
+		// Adding new contact to Addressbook
+		addressBook.addContact();
+        // using stream to Display the contacts
 		showContacts();
 
 	}

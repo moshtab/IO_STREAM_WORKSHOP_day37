@@ -53,6 +53,7 @@ public class AddressBook {
 		addressBookJDBC.readAddressBook();
 		addressBookJDBC.updateAddressBook();
 		addressBookJDBC.showContactsBetweenGivenDates();
+		addressBookJDBC.countContactsByCity();
 
 	}
 

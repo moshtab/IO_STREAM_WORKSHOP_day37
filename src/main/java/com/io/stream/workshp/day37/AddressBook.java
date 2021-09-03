@@ -52,6 +52,7 @@ public class AddressBook {
 		addressBookJDBC.eshtablishConnection();
 		addressBookJDBC.readAddressBook();
 		addressBookJDBC.updateAddressBook();
+		addressBookJDBC.showContactsBetweenGivenDates();
 
 	}
 

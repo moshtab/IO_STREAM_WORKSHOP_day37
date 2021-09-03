@@ -27,13 +27,13 @@ public class AddressBook {
 		// Adding new contact to Addressbook
 		addressBook.addContact();
 		// Editing the contact details
-		addressBook.editContact();
+		// addressBook.editContact();
 		// deleting contact by console
-		addressBook.deleteContact();
+		// addressBook.deleteContact();
 		// Adding multiple contact to Addressbook
-		addressBook.addingMultipleContacts();
+		// addressBook.addingMultipleContacts();
 		// Adding new contact to Addressbook2
-		addressBook2.addContact();
+		// addressBook2.addContact();
 		// using stream to Display the contacts
 		showContacts();
 		// searching for Name is present or not
@@ -41,6 +41,9 @@ public class AddressBook {
 		searchNameByCityOrState();
 		viewContactNamesByCityOrState();
 		countContactsByCityorState();
+		// section2 IO Streams
+		addressBook.writeIOContact();
+		addressBook.readIOContact();
 
 	}
 
@@ -187,7 +190,17 @@ public class AddressBook {
 				System.out.println("No City or State found");
 			}
 		}
-		System.out.println("Total counts of contacts :"+count);
+		System.out.println("Total counts of contacts :" + count);
+	}
+
+	private void writeIOContact() {
+		new AddressBookIOServiceFile().writeIOData(list);
+
+	}
+
+	private void readIOContact() {
+		new AddressBookIOServiceFile().readIOData();
+
 	}
 
 }

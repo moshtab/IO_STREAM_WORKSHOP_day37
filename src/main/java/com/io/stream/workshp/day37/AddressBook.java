@@ -40,6 +40,7 @@ public class AddressBook {
 		searchingContact();
 		searchNameByCityOrState();
 		viewContactNamesByCityOrState();
+		countContactsByCityorState();
 
 	}
 
@@ -138,6 +139,7 @@ public class AddressBook {
 	}
 
 	private static void searchingContact() {
+		System.out.println("Searching a contact by name============");
 		for (Contact i : list) {
 			if (i.firstName.contentEquals("Mohsin")) {
 
@@ -150,6 +152,7 @@ public class AddressBook {
 	}
 
 	private static void searchNameByCityOrState() {
+		System.out.println("Searching the ContactName by city or state==================== ");
 		for (Contact i : list) {
 			if (i.city.contentEquals("Metpally") && i.state.contentEquals("Telangana")
 					&& i.firstName.contentEquals("Mohsin")) {
@@ -163,6 +166,7 @@ public class AddressBook {
 	}
 
 	private static void viewContactNamesByCityOrState() {
+		System.out.println("Viewing the ContactNames by city or state================ ");
 		for (Contact i : list) {
 			if (i.city.contentEquals("Metpally") || i.state.contentEquals("Telangana")) {
 				System.out.println("Name found :" + i.firstName);
@@ -171,6 +175,19 @@ public class AddressBook {
 			}
 		}
 
+	}
+
+	private static void countContactsByCityorState() {
+		System.out.println("Counting the ContactNames by city or state================");
+		int count = 0;
+		for (Contact i : list) {
+			if (i.city.contentEquals("Metpally") || i.state.contentEquals("Telangana")) {
+				count++;
+			} else {
+				System.out.println("No City or State found");
+			}
+		}
+		System.out.println("Total counts of contacts :"+count);
 	}
 
 }

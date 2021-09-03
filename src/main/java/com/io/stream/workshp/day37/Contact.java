@@ -28,28 +28,4 @@ public class Contact {
 				+ ", email=" + email + ", phoneNumber=" + phoneNumber + ", zip=" + zip + "\n";
 	}
 
-	public void addContact() {
-		Scanner s = new Scanner(System.in);
-		System.out.println("Enter the First name");
-		String firstName = s.nextLine();
-
-		System.out.println("Enter the Last name");
-		String lastName = s.nextLine();
-
-		System.out.println("Enter the City name");
-		String city = s.nextLine();
-
-		System.out.println("Enter the State name");
-		String state = s.nextLine();
-
-		System.out.println("Enter the email");
-		String email = s.nextLine();
-
-		System.out.println("Enter the Phone number");
-		String phoneNumber = s.nextLine();
-
-		System.out.println("Enter the Zip");
-		String zip = s.nextLine();
-		
-	}
 }

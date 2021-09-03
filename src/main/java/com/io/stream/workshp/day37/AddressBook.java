@@ -22,7 +22,7 @@ public class AddressBook {
 		AddressBook addressBook = new AddressBook(list);
 		AddressBook addressBook2 = new AddressBook(list);
 		AddressBook addressBook3 = new AddressBook(list);
-		
+
 		addressBook.addContact();
 		// Adding new contact to Addressbook
 		addressBook.addContact();
@@ -36,6 +36,8 @@ public class AddressBook {
 		addressBook2.addContact();
 		// using stream to Display the contacts
 		showContacts();
+		// searching for Name is present or not
+		searchingContact();
 
 	}
 
@@ -129,6 +131,18 @@ public class AddressBook {
 		for (int i = 1; i <= numOfContacts; i++) {
 
 			addressBook.addContact();
+		}
+
+	}
+
+	private static void searchingContact() {
+		for (Contact i : list) {
+			if (i.firstName.contentEquals("Mohsin")) {
+
+				System.out.println("Name found :" + i.firstName);
+			} else {
+				System.out.println("No match");
+			}
 		}
 
 	}

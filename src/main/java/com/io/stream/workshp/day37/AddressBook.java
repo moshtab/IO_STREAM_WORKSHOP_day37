@@ -18,6 +18,8 @@ public class AddressBook {
 		System.out.println("Welcome to AddressBook program");
 		AddressBook addressBook = new AddressBook(list);
 		addressBook.addContact();
+		//Adding new contact to Addressbook
+		addressBook.addContact();
 		// using stream to Display the contacts
 		System.out.println("Displaying the contacts of contactPersons");
 		List<Object> result = list.stream().collect(Collectors.toList());

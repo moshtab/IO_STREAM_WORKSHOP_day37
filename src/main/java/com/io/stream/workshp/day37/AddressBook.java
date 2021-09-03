@@ -51,6 +51,7 @@ public class AddressBook {
 		AddressBookJDBC addressBookJDBC = new AddressBookJDBC();
 		addressBookJDBC.eshtablishConnection();
 		addressBookJDBC.readAddressBook();
+		addressBookJDBC.updateAddressBook();
 
 	}
 

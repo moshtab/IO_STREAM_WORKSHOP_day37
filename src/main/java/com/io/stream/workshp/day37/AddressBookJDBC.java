@@ -2,6 +2,7 @@ package com.io.stream.workshp.day37;
 
 import java.sql.Connection;
 import java.sql.DriverManager;
+import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
@@ -69,6 +70,35 @@ public class AddressBookJDBC {
 				} catch (SQLException sqlException) {
 					System.out.println(sqlException.getMessage());
 
+				}
+			}
+		}
+
+	}
+
+	public void updateAddressBook() {
+		System.out.println("Updating address of Sumer ");
+		Connection conn = getSqlConnection();
+		if (conn != null) {
+			String updateEmpPayroll = "UPDATE adressbook SET address = ? WHERE lastName ='Sumer'";
+			try {
+				PreparedStatement preparedStatement = conn.prepareStatement(updateEmpPayroll);
+				preparedStatement.setString(1, "Redhills");
+				int rowUpdated = preparedStatement.executeUpdate();
+				if (rowUpdated > 0) {
+					System.out.println("Data is Updated");
+				}
+			} catch (SQLException e) {
+
+				e.printStackTrace();
+			} finally {
+				if (conn != null) {
+					try {
+						conn.close();
+					} catch (SQLException sqlException) {
+						System.out.println(sqlException.getMessage());
+
+					}
 				}
 			}
 		}

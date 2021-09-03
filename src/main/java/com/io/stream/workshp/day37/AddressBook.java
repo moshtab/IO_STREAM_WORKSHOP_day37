@@ -6,10 +6,10 @@ import java.util.Scanner;
 import java.util.stream.Collectors;
 
 public class AddressBook {
-	List<Contact> list;
+	static List<Contact> list;
 
 	public AddressBook(List<Contact> list2) {
-		this.list = list2;
+		AddressBook.list = list2;
 	}
 
 	public static void main(String[] args) {
@@ -22,10 +22,10 @@ public class AddressBook {
 		addressBook.addContact();
 		// Editing the contact details
 		addressBook.editContact();
+		// deleting contact by console
+		addressBook.deleteContact();
 		// using stream to Display the contacts
-		System.out.println("Displaying the contacts of contactPersons");
-		List<Object> result = list.stream().collect(Collectors.toList());
-		System.out.println(result);
+		showContacts();
 
 	}
 
@@ -58,6 +58,13 @@ public class AddressBook {
 
 	}
 
+	private static void showContacts() {
+		System.out.println("Displaying the contacts of contactPersons");
+		List<Object> result = list.stream().collect(Collectors.toList());
+		System.out.println(result);
+
+	}
+
 	private void editContact() {
 		Scanner s = new Scanner(System.in);
 		System.out.println("Enter the First name");
@@ -81,6 +88,20 @@ public class AddressBook {
 		System.out.println("Enter the Zip");
 		String zip = s.nextLine();
 
+		Contact contact = new Contact(firstName, lastName, city, state, email, phoneNumber, zip);
+
+		list.add(contact);
+
+	}
+
+	private void deleteContact() {
+		String firstName = " ";
+		String lastName = " ";
+		String city = " ";
+		String state = " ";
+		String email = " ";
+		String phoneNumber = "";
+		String zip = "";
 		Contact contact = new Contact(firstName, lastName, city, state, email, phoneNumber, zip);
 
 		list.add(contact);

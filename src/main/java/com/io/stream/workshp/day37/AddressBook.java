@@ -44,6 +44,8 @@ public class AddressBook {
 		// section2 IO Streams
 		addressBook.writeIOContact();
 		addressBook.readIOContact();
+		addressBook.writeContactToCSV();
+		addressBook.readCsvContact();
 
 	}
 
@@ -200,6 +202,16 @@ public class AddressBook {
 
 	private void readIOContact() {
 		new AddressBookIOServiceFile().readIOData();
+
+	}
+
+	private void writeContactToCSV() {
+		new AddressBookIOServiceFile().writeCSVData(list);
+
+	}
+
+	private void readCsvContact() {
+		new AddressBookIOServiceFile().readCSVData();
 
 	}
 

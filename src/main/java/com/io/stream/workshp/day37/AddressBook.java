@@ -47,6 +47,10 @@ public class AddressBook {
 		addressBook.writeContactToCSV();
 		addressBook.readCsvContact();
 		addressBook.writeJsonContact();
+		//section3 JDBC
+		AddressBookJDBC addressBookJDBC = new AddressBookJDBC();
+		addressBookJDBC.eshtablishConnection();
+		addressBookJDBC.readAddressBook();
 
 	}
 

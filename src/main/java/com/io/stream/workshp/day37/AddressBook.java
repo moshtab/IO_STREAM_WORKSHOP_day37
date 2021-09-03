@@ -20,6 +20,9 @@ public class AddressBook {
 
 		System.out.println("Welcome to AddressBook program");
 		AddressBook addressBook = new AddressBook(list);
+		AddressBook addressBook2 = new AddressBook(list);
+		AddressBook addressBook3 = new AddressBook(list);
+		
 		addressBook.addContact();
 		// Adding new contact to Addressbook
 		addressBook.addContact();
@@ -27,8 +30,10 @@ public class AddressBook {
 		addressBook.editContact();
 		// deleting contact by console
 		addressBook.deleteContact();
-		// Adding new contact to Addressbook
+		// Adding multiple contact to Addressbook
 		addressBook.addingMultipleContacts();
+		// Adding new contact to Addressbook2
+		addressBook2.addContact();
 		// using stream to Display the contacts
 		showContacts();
 

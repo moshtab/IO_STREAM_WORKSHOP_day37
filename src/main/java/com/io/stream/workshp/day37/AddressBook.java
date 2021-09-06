@@ -1,12 +1,10 @@
 package com.io.stream.workshp.day37;
 
-import java.util.ArrayList;
 import java.util.List;
 import java.util.Scanner;
 import java.util.stream.Collectors;
 
 public class AddressBook {
-
 	static List<Contact> list;
 
 	public AddressBook(List<Contact> list2) {
@@ -15,50 +13,7 @@ public class AddressBook {
 
 	static AddressBook addressBook = new AddressBook(list);
 
-	public static void main(String[] args) {
-		List<Contact> list = new ArrayList<Contact>();
-
-		System.out.println("Welcome to AddressBook program");
-		AddressBook addressBook = new AddressBook(list);
-		AddressBook addressBook2 = new AddressBook(list);
-		AddressBook addressBook3 = new AddressBook(list);
-
-		addressBook.addContact();
-		// Adding new contact to Addressbook
-		addressBook.addContact();
-		// Editing the contact details
-		addressBook.editContact();
-		// deleting contact by console
-		addressBook.deleteContact();
-		// Adding multiple contact to Addressbook
-		addressBook.addingMultipleContacts();
-		// Adding new contact to Addressbook2
-		addressBook2.addContact();
-		// using stream to Display the contacts
-		showContacts();
-		// searching for Name is present or not
-		searchingContact();
-		searchNameByCityOrState();
-		viewContactNamesByCityOrState();
-		countContactsByCityorState();
-		// section2 IO Streams
-		addressBook.writeIOContact();
-		addressBook.readIOContact();
-		addressBook.writeContactToCSV();
-		addressBook.readCsvContact();
-		addressBook.writeJsonContact();
-		// section3 JDBC
-		AddressBookJDBC addressBookJDBC = new AddressBookJDBC();
-		addressBookJDBC.eshtablishConnection();
-		addressBookJDBC.readAddressBook();
-		addressBookJDBC.updateAddressBook();
-		addressBookJDBC.showContactsBetweenGivenDates();
-		addressBookJDBC.countContactsByCity();
-		addressBookJDBC.insertContact();
-
-	}
-
-	private void addContact() {
+	void addContact() {
 		System.out.println("Adding a new contact to Addressbook");
 		Scanner s = new Scanner(System.in);
 		System.out.println("Enter the First name");
@@ -85,18 +40,55 @@ public class AddressBook {
 		Contact contact = new Contact(firstName, lastName, city, state, email, phoneNumber, zip);
 
 		list.add(contact);
+		showContacts();
 
 	}
 
-	private static void showContacts() {
+	public void editContactByName() {
+
+		System.out.println("Editing the contact details of given person");
+		Scanner s = new Scanner(System.in);
+		System.out.println("Enter the name which u want to edit");
+		String name = s.nextLine();
+		for (Contact i : list) {
+			if (i.firstName.equals(name)) {
+				addressBook.editContact();
+				System.out.println("Displaying edited details");
+				showContacts();
+
+			} else {
+				System.out.println("No Name found");
+			}
+		}
+
+	}
+
+	public void deleteContactByName() {
+		System.out.println("Editing the contact details of given person");
+		Scanner s = new Scanner(System.in);
+		System.out.println("Enter the name which u want to delete");
+		String name = s.nextLine();
+		for (Contact i : list) {
+			if (i.firstName.equals(name)) {
+				addressBook.deleteContact();
+				showContacts();
+
+			} else {
+				System.out.println("No Name found");
+			}
+		}
+
+	}
+
+	public void showContacts() {
 		System.out.println("Displaying the contacts of contactPersons");
 		List<Object> result = list.stream().collect(Collectors.toList());
 		System.out.println(result);
 
 	}
 
-	private void editContact() {
-		System.out.println("Editing the contact details");
+	public void editContact() {
+
 		Scanner s = new Scanner(System.in);
 		System.out.println("Enter the First name");
 		String firstName = s.nextLine();
@@ -125,7 +117,7 @@ public class AddressBook {
 
 	}
 
-	private void deleteContact() {
+	public void deleteContact() {
 		System.out.println("Deleting the contacts");
 		String firstName = " ";
 		String lastName = " ";
@@ -140,7 +132,7 @@ public class AddressBook {
 
 	}
 
-	private void addingMultipleContacts() {
+	public void addingMultipleContacts() {
 		System.out.println("Adding multiple contacts to addressbook");
 		Scanner s = new Scanner(System.in);
 		System.out.println("Enter how many contacts do u want to add?");
@@ -152,10 +144,13 @@ public class AddressBook {
 
 	}
 
-	private static void searchingContact() {
+	public void searchingContact() {
 		System.out.println("Searching a contact by name============");
+		Scanner s = new Scanner(System.in);
+		System.out.println("Enter the name which u want to search");
+		String name = s.nextLine();
 		for (Contact i : list) {
-			if (i.firstName.contentEquals("Mohsin")) {
+			if (i.firstName.contentEquals(name)) {
 
 				System.out.println("Name found :" + i.firstName);
 			} else {
@@ -165,11 +160,17 @@ public class AddressBook {
 
 	}
 
-	private static void searchNameByCityOrState() {
+	public void searchNameByCityOrState() {
 		System.out.println("Searching the ContactName by city or state==================== ");
+		Scanner s = new Scanner(System.in);
+		System.out.println("Enter the city by which u want to search name");
+		String city = s.nextLine();
+		System.out.println("Enter the state by which u want to search name");
+		String state = s.nextLine();
+		System.out.println("Enter the name which u want to search");
+		String name = s.nextLine();
 		for (Contact i : list) {
-			if (i.city.contentEquals("Metpally") && i.state.contentEquals("Telangana")
-					&& i.firstName.contentEquals("Mohsin")) {
+			if (i.city.contentEquals(city) && i.state.contentEquals(state) && i.firstName.contentEquals(name)) {
 
 				System.out.println("Name found :" + i.firstName);
 			} else {
@@ -179,10 +180,15 @@ public class AddressBook {
 
 	}
 
-	private static void viewContactNamesByCityOrState() {
+	public void viewContactNamesByCityOrState() {
 		System.out.println("Viewing the ContactNames by city or state================ ");
+		Scanner s = new Scanner(System.in);
+		System.out.println("Enter the city by which u want to view names");
+		String city = s.nextLine();
+		System.out.println("Enter the state by which u want to view names");
+		String state = s.nextLine();
 		for (Contact i : list) {
-			if (i.city.contentEquals("Metpally") || i.state.contentEquals("Telangana")) {
+			if (i.city.contentEquals(city) || i.state.contentEquals(state)) {
 				System.out.println("Name found :" + i.firstName);
 			} else {
 				System.out.println("No City or State found");
@@ -191,11 +197,16 @@ public class AddressBook {
 
 	}
 
-	private static void countContactsByCityorState() {
+	public void countContactsByCityorState() {
 		System.out.println("Counting the ContactNames by city or state================");
+		Scanner s = new Scanner(System.in);
+		System.out.println("Enter the city by which u want to count names");
+		String city = s.nextLine();
+		System.out.println("Enter the state by which u want to count names");
+		String state = s.nextLine();
 		int count = 0;
 		for (Contact i : list) {
-			if (i.city.contentEquals("Metpally") || i.state.contentEquals("Telangana")) {
+			if (i.city.contentEquals(city) || i.state.contentEquals(state)) {
 				count++;
 			} else {
 				System.out.println("No City or State found");

@@ -177,6 +177,7 @@ public class AddressBookJDBC {
 		if (conn != null) {
 			String insertEmp = "INSERT INTO adressbook (firstName,lastName,address,city,state,zip,phoneNumber,email,joinedDate) values(?,?,?,?,?,?,?,?,?)";
 			try {
+				conn.setAutoCommit(false);
 				PreparedStatement preparedStatement = conn.prepareStatement(insertEmp);
 				preparedStatement.setString(1, "Md");
 				preparedStatement.setString(2, "Sofyan");
@@ -192,9 +193,14 @@ public class AddressBookJDBC {
 				if (rowUpdated > 0) {
 					System.out.println("Data is Updated");
 				}
+				conn.commit();
 			} catch (SQLException e) {
-
 				e.printStackTrace();
+				try {
+					conn.rollback();
+				} catch (SQLException e1) {
+					e1.printStackTrace();
+				}
 			} finally {
 				if (conn != null) {
 					try {
